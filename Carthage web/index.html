@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CARTHAGE Elevators | Sales, Maintenance & Installations</title>
+  <meta name="description" content="CARTHAGE Elevators – selling, maintaining, and installing elevators across Egypt and the GCC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#f8fbff; --card:#fff; --muted:#5b7089; --text:#0b1324; --brand:#3aa8ff; --brand-2:#7cc8ff; --ring:rgba(58,168,255,.35); --border:#e2e8f0; }
+    *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    img{max-width:100%;display:block} a{text-decoration:none;color:inherit} button{font:inherit}
+    .container{width:min(1120px,92%);margin-inline:auto}
+
+    /* Header / Nav */
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(8px);background:rgba(255,255,255,.7);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
+    .brand img{height:60px;width:auto;opacity:.9}
+    .nav-links{display:flex;gap:1rem;align-items:center}
+    .nav-links a{padding:.55rem .8rem;border-radius:10px;color:var(--muted)}
+    .nav-links a.active{background:rgba(58,168,255,.12);color:var(--text);font-weight:800}
+    .nav-links a:hover,.nav-links a:focus{color:var(--text);background:rgba(58,168,255,.10);outline:none;box-shadow:0 0 0 2px var(--ring)}
+    .nav-cta{padding:.55rem .9rem;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b0e14;font-weight:800}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden;text-align:center;min-height:100vh;}
+    .hero .bg{position:absolute;inset:0;background:
+        radial-gradient(800px 400px at 0% 0%,rgba(58,168,255,.18),transparent 60%),
+        radial-gradient(600px 300px at 100% 10%,rgba(124,200,255,.16),transparent 60%),
+        radial-gradient(400px 200px at 50% 100%,rgba(58,168,255,.10),transparent 60%),
+        url("C:/Users/abdal/Desktop/Carthage web/Images/background.png") center/cover no-repeat;
+      pointer-events:none;}
+    .hero .content{padding:7rem 0 5rem;position:relative}
+    .hero-logo{margin:0 auto 1.5rem auto;max-width:200px;opacity:.9}
+    .eyebrow{color:var(--brand);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem}
+    .headline{font-size:clamp(2rem,4vw + 1rem,3.2rem);line-height:1.1;font-weight:800;margin:.6rem 0 1rem}
+    .sub{color:var(--muted);max-width:62ch;margin:0 auto}
+    .hero-cta{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap;justify-content:center}
+
+    /* Sections */
+    section{padding:4rem 0;border-top:1px solid var(--border)}
+    h2.section-title{font-size:clamp(1.5rem,2.2vw + 1rem,2.1rem);margin:0 0 1rem;text-align:center}
+    p.section-subtitle{color:var(--muted);max-width:62ch;margin:0 auto;text-align:center}
+
+    /* Grids & Cards */
+    .grid{display:grid;gap:1.25rem}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media(max-width:680px){.grid-2,.grid-3{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem;text-align:left}
+    .pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--muted);padding:.35rem .6rem;border:1px solid var(--border);border-radius:999px}
+
+    footer{border-top:1px solid var(--border);padding:2rem 0;color:var(--muted);text-align:center}
+
+    /* Router */
+    [data-route]{display:none}
+    [data-route].show{display:block}
+    .cta-section{text-align:center;padding:2rem 0}
+
+    /* Pro contact styles */
+    .elevated{box-shadow:0 12px 30px rgba(11,19,36,.06)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-grid .full{grid-column:1 / -1}
+    .field label{font-size:.9rem;color:var(--muted);display:block;margin:0 0 .35rem}
+    .input-wrap{position:relative}
+    .input-wrap svg{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);pointer-events:none;opacity:.6}
+    .input, .select, textarea.input{width:100%;background:#f0f7ff;border:1px solid var(--border);border-radius:12px;padding:.85rem .9rem .85rem 2.4rem}
+    .select{appearance:none;background-image:linear-gradient(45deg,transparent 50%, var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%, transparent 50%);background-position:calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px);background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+    .input:focus, .select:focus, textarea.input:focus{outline:none;box-shadow:0 0 0 2px var(--ring);border-color:transparent}
+    .hint{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+    .error:invalid{border-color:#ef4444}
+    .actions{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin-top:.4rem}
+    .btn{padding:.8rem 1rem;border-radius:12px;border:1px solid var(--border);color:var(--text);background:#f0f7ff}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b0e14;border-color:transparent;font-weight:800;cursor:pointer}
+    .btn.link{background:#fff;border:1px solid var(--border)}
+
+    /* Professional media gallery */
+    .media-gallery{display:flex;flex-direction:column;gap:2rem;padding:4rem 0;}
+    .media-item{max-width:1200px;width:92%;margin:0 auto;border-radius:16px;overflow:hidden;
+      box-shadow:0 6px 20px rgba(0,0,0,0.15);background:#000;}
+    .media-item img,.media-item video{width:100%;height:auto;display:block;object-fit:cover;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" aria-label="Main navigation">
+      <div class="brand">
+        <img src="Images/logo.png" alt="CARTHAGE ELEVATORS Logo">
+        <span>CARTHAGE ELEVATORS</span>
+      </div>
+      <nav class="nav-links" id="topnav">
+        <a data-link href="#/">Home</a>
+        <a data-link href="#/services">Services</a>
+        <a data-link href="#/about">About</a>
+        <a data-link class="nav-cta" href="#/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <main data-route="home">
+    <section class="hero">
+      <div class="bg" aria-hidden="true"></div>
+      <div class="container content">
+        <img src="Images/logo.png" alt="CARTHAGE Elevators Logo" class="hero-logo">
+        <p class="eyebrow">Elevator Experts</p>
+        <h1 class="headline" style="color:#5ab8ff;">Sales, Maintenance & Installations — done right.</h1>
+        <p class="sub">We supply, install, and maintain elevator systems for residential, commercial, and industrial buildings. Fast response, certified technicians, and transparent pricing.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#/services">View Services</a>
+          <a class="btn" href="#/contact">Get a Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Partners -->
+    <section id="partners">
+      <div class="container">
+        <h2 class="section-title">Our Partners</h2>
+        <p class="section-subtitle">We proudly collaborate with international elevator specialists and manufacturers to bring world-class quality to the Middle East and Africa. Our network spans across Korean innovation, Italian craftsmanship, and Chinese engineering expertise.</p>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:1rem;">
+          <article class="card"><h3>Korean Partners</h3><p class="muted">Advanced technology, smart control systems, and high-efficiency designs that set global benchmarks.</p></article>
+          <article class="card"><h3>Italian Partners</h3><p class="muted">Elegant engineering, safety standards, and seamless integration into luxury and commercial projects.</p></article>
+          <article class="card"><h3>Chinese Partners</h3><p class="muted">Robust production capacity, competitive solutions, and reliable components used in large-scale developments.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- SERVICES -->
+  <main data-route="services">
+    <section class="hero">
+      <div class="bg" aria-hidden="true" style="position:absolute;inset:0;
+        background:
+          radial-gradient(800px 400px at 0% 0%,rgba(58,168,255,.18),transparent 60%),
+          radial-gradient(600px 300px at 100% 10%,rgba(124,200,255,.16),transparent 60%),
+          radial-gradient(400px 200px at 50% 100%,rgba(58,168,255,.10),transparent 60%),
+          url('C:/Users/abdal/Desktop/Carthage web/Images/background1.png') center/cover no-repeat;
+        pointer-events:none;"></div>
+      <div class="container content" style="position:relative; padding:6rem 0 4rem; color:#fff;">
+        <p class="pill" style="color:#fff; border-color:rgba(255,255,255,0.5)">Our Services</p>
+        <h2 class="section-title" style="margin-top:.3rem; color:#fff;">Complete Elevator Solutions</h2>
+        <p class="section-subtitle" style="color:#fff;">From new installations to ongoing care and original spare parts — we provide reliable, end-to-end services designed to keep your elevators safe, modern, and efficient.</p>
+        
+        <div class="grid grid-3" style="margin-top:1.25rem">
+          <div class="card" style="background:rgba(255,255,255,0.55); backdrop-filter:blur(6px); color:#000;">
+            <p class="pill" style="color:#000; border-color:rgba(0,0,0,0.3)">Installations</p>
+            <h3 style="color:#000;">New Elevators & Lifts</h3>
+            <p style="color:#000;">We design and install passenger, freight, and panoramic elevators to international standards, ensuring safety, efficiency, and long-lasting performance.</p>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,0.55); backdrop-filter:blur(6px); color:#000;">
+            <p class="pill" style="color:#000; border-color:rgba(0,0,0,0.3)">Maintenance</p>
+            <h3 style="color:#000;">Preventive & Emergency Service</h3>
+            <p style="color:#000;">Scheduled inspections, lubrication, calibration, and 24/7 breakdown support — all handled by certified technicians to minimize downtime.</p>
+          </div>
+          <div class="card" style="background:rgba(255,255,255,0.55); backdrop-filter:blur(6px); color:#000;">
+            <p class="pill" style="color:#000; border-color:rgba(0,0,0,0.3)">Spare Parts</p>
+            <h3 style="color:#000;">Reliable Components</h3>
+            <p style="color:#000;">We stock a full range of genuine spare parts sourced from Italy, China, and Korea. From controllers to door systems, every part you need is available and ready for installation.</p>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <a class="btn primary" href="#/contact">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <div class="media-gallery">
+      <div class="media-item">
+        <video src="C:/Users/abdal/Desktop/Carthage web/Videos/servicesV.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="media-item"><img src="C:/Users/abdal/Desktop/Carthage web/Images/S1.jpeg" alt="Service photo 1"></div>
+      <div class="media-item"><img src="C:/Users/abdal/Desktop/Carthage web/Images/S2.jpeg" alt="Service photo 2"></div>
+      <div class="media-item"><img src="C:/Users/abdal/Desktop/Carthage web/Images/S3.jpeg" alt="Service photo 3"></div>
+      <div class="media-item"><img src="C:/Users/abdal/Desktop/Carthage web/Images/S4.jpeg" alt="Service photo 4"></div>
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <main data-route="about">
+    <section>
+      <div class="container grid grid-2">
+        <div class="card">
+          <h2 class="section-title">About Us</h2>
+          <p class="section-subtitle">CARTHAGE Elevators delivers safe, reliable vertical transportation—selling, maintaining, and installing elevators across Middle East and Africa.</p>
+          <ul class="features" style="margin:1rem 0; padding-left:0; list-style:none; gap:.9rem; display:grid;">
+            <li><div class="check">✅</div><div><strong>Comprehensive Solutions.</strong><div class="muted">From sales to installation and maintenance, we provide end-to-end elevator services tailored to each project.</div></div></li>
+            <li><div class="check">✅</div><div><strong>Safety & Reliability.</strong><div class="muted">Every step is executed to the highest international standards, ensuring secure, efficient, and long-lasting performance.</div></div></li>
+            <li><div class="check">✅</div><div><strong>Trusted Expertise.</strong><div class="muted">With proven experience across landmark projects, our team delivers precision, professionalism, and dedicated after-sales support..</div></div></li>
+          </ul>
+          <div class="pill">📍  Middle East • Africa </div>
+        </div>
+        <div class="card">
+          <div class="media-item"><img src="C:/Users/abdal/Desktop/Carthage web/Images/about.jpeg" alt="Service photo 1"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT -->
+  <main data-route="contact">
+    <section>
+      <div class="container grid grid-2">
+        <div class="card elevated">
+          <h2 class="section-title" style="margin-top:0">Contact Us</h2>
+          <p class="section-subtitle">Professional inquiries welcome—installations, modernization, or maintenance contracts. Fill the form and our team will reach out.</p>
+          <form action="https://formspree.io/f/mdkwnzeo" method="POST" accept-charset="UTF-8">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Full Name *</label>
+                <div class="input-wrap">
+                  <input class="input error" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <div class="input-wrap">
+                  <input class="input" id="company" name="company" placeholder="Your company (optional)" autocomplete="organization" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="email">Email *</label>
+                <div class="input-wrap">
+                  <input class="input error" id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <div class="input-wrap">
+                  <input class="input" id="phone" name="phone" placeholder="+20" inputmode="tel" autocomplete="tel" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="service">Service *</label>
+                <div class="input-wrap">
+                  <select class="select error" id="service" name="service" required>
+                    <option value="" selected disabled>Select a service</option>
+                    <option>Purchase new elevator</option>
+                    <option>New Installation</option>
+                    <option>Maintenance</option>
+                    <option>Repair / Call-out</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="city">City</label>
+                <div class="input-wrap">
+                  <input class="input" id="city" name="city" placeholder="Location" autocomplete="address-level2" />
+                </div>
+              </div>
+              <div class="field full">
+                <label for="msg">Message *</label>
+                <div class="input-wrap">
+                  <textarea class="input error" id="msg" name="message" placeholder="Tell us about the site, floors, capacity, timeline…" required></textarea>
+                </div>
+                <div class="hint">Please include building type (residential/commercial), number of stops, and any brand preferences.</div>
+              </div>
+              <div class="field full" style="display:flex;align-items:center;gap:.6rem">
+                <input id="consent" type="checkbox" required style="width:16px;height:16px">
+                <label for="consent" style="margin:0">I agree to be contacted about this inquiry.</label>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn primary" type="submit">Send Message</button>
+              <span class="hint">We reply within one business day.</span>
+            </div>
+          </form>
+        </div>
+        <div class="card elevated">
+          <h3 style="margin-top:0">Head Office</h3>
+          <p class="muted"><br>25 Gueziret alarab</p>
+          <h3>Hours</h3>
+          <p class="muted">24\7</p>
+          <h3>Direct Contacts</h3>
+          <p class="muted"><a href="tel:+20 101 186 4387">+20 101 186 4387 Whatsapp</a><br><a href="Info@carthageelevator.com">Info@carthageelevator.com</a></p>
+          <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:1rem;background:#f0f7ff;height:200px;display:grid;place-items:center">Map placeholder</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> CARTHAGE Elevators. All rights reserved.</p>
+      <p>Made with ❤ • Sales • Maintenance • Installations</p>
+    </div>
+  </footer>
+
+  <script>
+    const routes = {"#/":"home","#/services":"services","#/about":"about","#/contact":"contact"};
+    function setActive(path){
+      const nav=document.getElementById('topnav'); if(!nav) return;
+      nav.querySelectorAll('a').forEach(a=>a.classList.remove('active'));
+      const link=nav.querySelector(`a[href='${path}']`); if(link) link.classList.add('active');
+     }
+    function render(){
+      const path=location.hash||"#/";
+      const key=Object.keys(routes).includes(path)?path:"#/";
+      const show=routes[key];
+      document.querySelectorAll('[data-route]').forEach(el=>el.classList.remove('show'));
+      const target=document.querySelector(`[data-route="${show}"]`);
+      if(target) target.classList.add('show');
+      setActive(key);
+      window.scrollTo({top:0,behavior:'instant'});
+    }
+    
+    window.addEventListener('hashchange',render);
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('year').textContent=new Date().getFullYear();
+      render();
+    });
+  </script>
+</body>
+</html>
