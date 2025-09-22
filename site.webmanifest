@@ -1,0 +1,12 @@
+{
+  "name": "CARTHAGE Elevators",
+  "short_name": "Carthage",
+  "icons": [
+    { "src": "logo.png", "sizes": "192x192", "type": "logo192.png" },
+    { "src": "logo.png", "sizes": "512x512", "type": "logo512.png" }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
+
