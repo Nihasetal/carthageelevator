@@ -13,6 +13,9 @@
 15 <link rel="icon" type="image/png" sizes="192x192" href="logo192.png">
 16 <link rel="apple-touch-icon" href="logo180.png">
 17 <link rel="shortcut icon" href="Carthage web/Images/logo.png">
+  <!-- Manifest -->
+  <link rel="manifest" href="site.webmanifest">
+  
   <style>
     :root { --bg:#f8fbff; --card:#fff; --muted:#5b7089; --text:#0b1324; --brand:#3aa8ff; --brand-2:#7cc8ff; --ring:rgba(58,168,255,.35); --border:#e2e8f0; }
     *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
@@ -89,6 +92,20 @@
       box-shadow:0 6px 20px rgba(0,0,0,0.15);background:#000;}
     .media-item img,.media-item video{width:100%;height:auto;display:block;object-fit:cover;}
   </style>
+  146   </style>
+147 
+148   <!-- Structured Data for Google (Organization + Logo) -->
+149   <script type="application/ld+json">
+150   {
+151     "@context": "https://schema.org",
+152     "@type": "Organization",
+153     "url": "https://carthageelevator.com
+154     "logo": "https://carthageelevator.com/logo512.png"
+
+155   }
+156   </script>
+157 </head>
+
 </head>
 <body>
   <header>
@@ -325,6 +342,7 @@
   </script>
 </body>
 </html>
+
 
 
 
