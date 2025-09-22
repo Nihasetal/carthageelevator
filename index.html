@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CARTHAGE Elevators | Sales, Maintenance & Installations</title>
   <meta name="description" content="CARTHAGE Elevators – selling, maintaining, and installing elevators across Egypt and the GCC." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <!-- Favicon / Tab Icon -->
-14 <link rel="icon" type="image/png" sizes="32x32" href="logo33.png">
-15 <link rel="icon" type="image/png" sizes="192x192" href="logo192.png">
-16 <link rel="apple-touch-icon" href="logo180.png">
-17 <link rel="shortcut icon" href="Carthage web/Images/logo.png">
-  <!-- Manifest -->
+
+  <!-- Favicon / Tab Icon (make sure these files exist in the same folder as index.html) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="logo33.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="logo192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="logo180.png">
+  <!-- Avoid spaces in folder names; either rename or percent-encode. Prefer a simple path: -->
+  <link rel="shortcut icon" href="Images/logo.png">
+
+  <!-- Manifest (optional) -->
   <link rel="manifest" href="site.webmanifest">
-  
+
   <style>
     :root { --bg:#f8fbff; --card:#fff; --muted:#5b7089; --text:#0b1324; --brand:#3aa8ff; --brand-2:#7cc8ff; --ring:rgba(58,168,255,.35); --border:#e2e8f0; }
     *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
@@ -92,26 +96,23 @@
       box-shadow:0 6px 20px rgba(0,0,0,0.15);background:#000;}
     .media-item img,.media-item video{width:100%;height:auto;display:block;object-fit:cover;}
   </style>
-  146   </style>
-147 
-148   <!-- Structured Data for Google (Organization + Logo) -->
-149   <script type="application/ld+json">
-150   {
-151     "@context": "https://schema.org",
-152     "@type": "Organization",
-153     "url": "https://carthageelevator.com
-154     "logo": "https://carthageelevator.com/logo512.png"
 
-155   }
-156   </script>
-157 </head>
-
+  <!-- Structured Data for Google (Organization + Logo) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://carthageelevator.com",
+    "logo": "https://carthageelevator.com/logo512.png"
+  }
+  </script>
 </head>
+
 <body>
   <header>
     <div class="container nav" aria-label="Main navigation">
       <div class="brand">
-        <img src="Carthage web/Images/logo.png" alt="CARTHAGE ELEVATORS Logo">
+        <img src="Images/logo.png" alt="CARTHAGE ELEVATORS Logo">
         <span>CARTHAGE ELEVATORS</span>
       </div>
       <nav class="nav-links" id="topnav">
@@ -152,7 +153,6 @@
       </div>
     </section>
   </main>
-
 
   <!-- SERVICES -->
   <main data-route="services">
@@ -298,11 +298,14 @@
         </div>
         <div class="card elevated">
           <h3 style="margin-top:0">Head Office</h3>
-          <p class="muted"><br>25 Gueziret alarab,Cairo,Egypt</p>
+          <p class="muted"><br>25 Gueziret alarab, Cairo, Egypt</p>
           <h3>Hours</h3>
-          <p class="muted">24\7</p>
+          <p class="muted">24/7</p>
           <h3>Direct Contacts</h3>
-          <p class="muted"><a href="tel:+20 101 186 4387">+20 101 186 4387 Whatsapp</a><br><a href="Info@carthageelevator.com">Info@carthageelevator.com</a></p>
+          <p class="muted">
+            <a href="tel:+201011864387">+20 101 186 4387 (WhatsApp)</a><br>
+            <a href="mailto:Info@carthageelevator.com">Info@carthageelevator.com</a>
+          </p>
           <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:1rem;background:#f0f7ff;height:200px;display:grid;place-items:center">Map placeholder</div>
         </div>
       </div>
@@ -322,7 +325,7 @@
       const nav=document.getElementById('topnav'); if(!nav) return;
       nav.querySelectorAll('a').forEach(a=>a.classList.remove('active'));
       const link=nav.querySelector(`a[href='${path}']`); if(link) link.classList.add('active');
-     }
+    }
     function render(){
       const path=location.hash||"#/";
       const key=Object.keys(routes).includes(path)?path:"#/";
@@ -333,7 +336,6 @@
       setActive(key);
       window.scrollTo({top:0,behavior:'instant'});
     }
-    
     window.addEventListener('hashchange',render);
     document.addEventListener('DOMContentLoaded',()=>{
       document.getElementById('year').textContent=new Date().getFullYear();
@@ -342,15 +344,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
